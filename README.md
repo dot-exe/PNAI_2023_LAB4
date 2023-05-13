@@ -38,21 +38,9 @@ VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=wholroy
 ### Python
 This project is based on Python 3.10.7. Please consider to use mentioned version or higher.
 ### Django
-Use `pip install django` in your terminal to install the newest version of Django. If you want to install the one used in this project (4.2.1) use `pip install=django=4.2.1` to specify.
+Use `pip install django` in your terminal to install the newest version of Django. If you want to install the one used in this project (4.2.1) use `pip install django=4.2.1` to specify.
 ### Check setup
 Make sure, that Python and Django are installed. Run `python --version` and `python -m django --version` to check that.
-
-## SqLite3 database update
-
-During this part of project a new foreign keys of Bibliotekarz and Wydawca to Instancja Ksiazki are created. Redoing migrations is required
-
-To make sure migration was done properly follow these steps:
-+ `cd biblioteka`
-+ `python manage.py makemigrations`
-+ `python manage.py migrate`
-+ `python manage.py showmigrations`
-  + at this point, if one of the migrations are not checked, consider remove your `db.sqlite3` database file. It is highly probable that your data does not match models from previous stage of this project. After removing the database, do `makemigrations` and `migrate` once again.
-
 ## Run project
 To run this project:
 + Open terminal and go to the directory with `manage.py` script
