@@ -1,13 +1,16 @@
+from typing import Any
+from django.db.models.query import QuerySet
 from django.shortcuts import render
-from .models import Autor, Gatunek, Ksiazka, InstacjaKsiazki, Wydawca, Bibliotekarz
+from .models import Autor, Gatunek, Ksiazka, InstancjaKsiazki, Wydawca, Bibliotekarz
 from django.views import generic
+from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 
 
 def index(request):
     num_ks = Ksiazka.objects.all().count()
-    num_in = InstacjaKsiazki.objects.all().count()
-    num_in_d = InstacjaKsiazki.objects.filter(status__exact='d').count()
+    num_in = InstancjaKsiazki.objects.all().count()
+    num_in_d = InstancjaKsiazki.objects.filter(status__exact='d').count()
     num_au = Autor.objects.count()
     num_wyd = Wydawca.objects.count()
     num_bib = Bibliotekarz.objects.count()
@@ -71,3 +74,12 @@ class BibliotekarzListView(generic.ListView):
 class BibliotekarzSzczegolView(generic.DetailView):
     model = Bibliotekarz
     template_name = 'bibliotekarz_detail.html'
+
+
+class KsiazkiUzytkownikaListView(LoginRequiredMixin, generic.ListView):
+    model = InstancjaKsiazki
+    template_name = 'KsiazkiUzytkownika.html'
+    paginate_by = 2
+
+    def get_queryset(self):
+        return InstancjaKsiazki.objects.filter(wypozycza=self.request.user).filter(status__exact='o').order_by('data_zwrotu')
