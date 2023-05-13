@@ -42,7 +42,7 @@ Use `pip install django` in your terminal to install the newest version of Djang
 ### Check setup
 Make sure, that Python and Django are installed. Run `python --version` and `python -m django --version` to check that.
 
-### SqLite3 database update
+## SqLite3 database update
 
 During this part of project a new foreign keys of Bibliotekarz and Wydawca to Instancja Ksiazki are created. Redoing migrations is required
 
