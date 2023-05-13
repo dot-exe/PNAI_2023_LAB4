@@ -13,4 +13,6 @@ urlpatterns = [
     path('bibliotekarze/', views.BibliotekarzListView.as_view(), name='bibliotekarze'),
     path('bibliotekarz/<int:pk>', views.BibliotekarzSzczegolView.as_view(),
          name='bibliotekarz-detail'),
+    path('mojeksiazki/', views.KsiazkiUzytkownikaListView.as_view(),
+         name='moje-pozyczone'),
 ]
