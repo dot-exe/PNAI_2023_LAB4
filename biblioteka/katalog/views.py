@@ -82,4 +82,4 @@ class KsiazkiUzytkownikaListView(LoginRequiredMixin, generic.ListView):
     paginate_by = 2
 
     def get_queryset(self):
-        return InstancjaKsiazki.objects.filter(wypozycza=self.request.user).filter(status__exact='o').order_by('data_zwrotu')
+        return InstancjaKsiazki.objects.filter(wypozycza=self.request.user).filter(status__exact='w').order_by('data_zwrotu')

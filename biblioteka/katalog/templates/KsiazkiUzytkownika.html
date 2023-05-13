@@ -6,8 +6,9 @@
     {% for ik in instancjaksiazki_list %}
     <li class="{% if ik.data_zwrotu %} text-danger {% endif %}">
         <a href="{% url 'ksiazka-detail' ik.ksiazka.pk %}">
-            ({{ ik.data_zwrotu }})
-        </a>
+            {{ ik.ksiazka.tytul }}
+        </a> 
+        ({{ ik.data_zwrotu }})
     </li>
     {% endfor %}
 </ul>
